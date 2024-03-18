@@ -86,7 +86,26 @@ class AuthController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user_id = User::find($id);
+        // $user_id->update($request->all());
+        if($user_id)
+        {
+            $user_id->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'role' => $request->input('role'),
+            ]);
+            return response([
+                'status' => 200,
+                'message' => 'Update user success!'
+            ]);
+        }else{
+            return response([
+                'status' => 404,
+                'message' => 'Update user fail!'
+            ]);
+        }
     }
 
     /**
