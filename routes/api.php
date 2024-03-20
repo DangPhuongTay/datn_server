@@ -32,4 +32,4 @@ Route::put('/user/update/{id}', [AuthController::class, 'update']);
 
 Route::get('/alluser', [UserController::class, 'index']);
 Route::get('/user/{id}', [UserController::class, 'user_id']);
-Route::get('/user/delete/{id}', [UserController::class, 'destroy']);
+Route::delete('/user/delete/{id}', [UserController::class, 'destroy']);
